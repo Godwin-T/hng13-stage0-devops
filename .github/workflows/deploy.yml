@@ -36,7 +36,20 @@ jobs:
           key: ${{ secrets.GCP_SSH_KEY }}
           port: ${{ secrets.GCP_PORT || '22' }}
           source: "index.html"
-          target: "/var/www/html/"
+          target: "/tmp/"
+
+      - name: Publish to NGINX web root
+        uses: appleboy/ssh-action@v0.1.11
+        with:
+          host: ${{ secrets.GCP_HOST }}
+          username: ${{ secrets.GCP_USERNAME }}
+          key: ${{ secrets.GCP_SSH_KEY }}
+          port: ${{ secrets.GCP_PORT || '22' }}
+          script: |
+            sudo mkdir -p /var/www/html
+            sudo mv /tmp/index.html /var/www/html/index.html
+            sudo chown root:root /var/www/html/index.html
+            sudo chmod 644 /var/www/html/index.html
 
       - name: Reload NGINX
         uses: appleboy/ssh-action@v1.2.2
