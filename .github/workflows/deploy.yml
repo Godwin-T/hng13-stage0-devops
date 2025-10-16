@@ -39,7 +39,7 @@ jobs:
           target: "/var/www/html/"
 
       - name: Reload NGINX
-        uses: appleboy/ssh-action@v0.1.11
+        uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.GCP_HOST }}
           username: ${{ secrets.GCP_USERNAME }}
