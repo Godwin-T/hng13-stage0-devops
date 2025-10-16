@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Ensure NGINX is installed
-        uses: appleboy/ssh-action@v0.1.11
+        uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.GCP_HOST }}
           username: ${{ secrets.GCP_USERNAME }}
