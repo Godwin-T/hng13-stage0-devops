@@ -39,7 +39,7 @@ jobs:
           target: "/tmp/"
 
       - name: Publish to NGINX web root
-        uses: appleboy/ssh-action@v0.1.11
+        uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.GCP_HOST }}
           username: ${{ secrets.GCP_USERNAME }}
